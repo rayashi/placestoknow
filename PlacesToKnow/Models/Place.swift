@@ -15,11 +15,29 @@ class Place {
     }
     
     init(placemark: CLPlacemark) {
-        <#statements#>
+        latitude = (placemark.location?.coordinate.latitude)!
+        logitude = (placemark.location?.coordinate.longitude)!
+        name = ""
+        address = Place.getAddress(from: placemark)
     }
     
-    func getAddress(from placemark: CLPlacemark) -> String {
+    static func getAddress(from placemark: CLPlacemark) -> String {
         var address = ""
+        if let street = placemark.thoroughfare {
+            address += street
+        }
+        if let number = placemark.subThoroughfare {
+            address += " \(number)"
+        }
+        if let neighborhood = placemark.subLocality {
+            address += ", \(neighborhood)"
+        }
+        if let city = placemark.locality {
+            address += "\n \(city)"
+        }
+        if let state = placemark.administrativeArea {
+            address += " - \(state)"
+        }
         
         return address
     }

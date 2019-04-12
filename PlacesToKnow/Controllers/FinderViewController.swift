@@ -20,7 +20,9 @@ class FinderViewController: UIViewController {
         load(show: true)
         let geoCoder = CLGeocoder()
         geoCoder.geocodeAddressString(term) { (placemarkes, error) in
-            
+            self.load(show: false)
+            guard let placemark = placemarkes?.first else { return }
+            print(Place.getAddress(from: placemark))
         }
         
     }
