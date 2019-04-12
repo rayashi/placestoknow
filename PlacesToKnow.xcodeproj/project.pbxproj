@@ -8,12 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		5CB30246225FF50D006F7D35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB30245225FF50D006F7D35 /* AppDelegate.swift */; };
-		5CB30248225FF50D006F7D35 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB30247225FF50D006F7D35 /* ViewController.swift */; };
 		5CB3024B225FF50D006F7D35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CB30249225FF50D006F7D35 /* Main.storyboard */; };
 		5CB3024D225FF50E006F7D35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CB3024C225FF50E006F7D35 /* Assets.xcassets */; };
 		5CB30250225FF50E006F7D35 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CB3024E225FF50E006F7D35 /* LaunchScreen.storyboard */; };
 		5CB3025B225FF50F006F7D35 /* PlacesToKnowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB3025A225FF50F006F7D35 /* PlacesToKnowTests.swift */; };
 		5CB30266225FF50F006F7D35 /* PlacesToKnowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB30265225FF50F006F7D35 /* PlacesToKnowUITests.swift */; };
+		5CB30274225FF89E006F7D35 /* PlacesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB30273225FF89E006F7D35 /* PlacesTableViewController.swift */; };
+		5CB30276225FF8F4006F7D35 /* FinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB30275225FF8F4006F7D35 /* FinderViewController.swift */; };
+		5CB3027A22600C10006F7D35 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB3027922600C10006F7D35 /* MapViewController.swift */; };
+		5CB3027C2260154D006F7D35 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB3027B2260154D006F7D35 /* Place.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +39,6 @@
 /* Begin PBXFileReference section */
 		5CB30242225FF50D006F7D35 /* PlacesToKnow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlacesToKnow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CB30245225FF50D006F7D35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5CB30247225FF50D006F7D35 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5CB3024A225FF50D006F7D35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5CB3024C225FF50E006F7D35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5CB3024F225FF50E006F7D35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +49,10 @@
 		5CB30261225FF50F006F7D35 /* PlacesToKnowUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlacesToKnowUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CB30265225FF50F006F7D35 /* PlacesToKnowUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesToKnowUITests.swift; sourceTree = "<group>"; };
 		5CB30267225FF50F006F7D35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5CB30273225FF89E006F7D35 /* PlacesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesTableViewController.swift; sourceTree = "<group>"; };
+		5CB30275225FF8F4006F7D35 /* FinderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinderViewController.swift; sourceTree = "<group>"; };
+		5CB3027922600C10006F7D35 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		5CB3027B2260154D006F7D35 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,11 +103,11 @@
 		5CB30244225FF50D006F7D35 /* PlacesToKnow */ = {
 			isa = PBXGroup;
 			children = (
+				5CB3027D22601556006F7D35 /* Models */,
 				5CB30245225FF50D006F7D35 /* AppDelegate.swift */,
-				5CB30247225FF50D006F7D35 /* ViewController.swift */,
-				5CB30249225FF50D006F7D35 /* Main.storyboard */,
+				5CB302782260007E006F7D35 /* Views */,
+				5CB3027722600061006F7D35 /* Controllers */,
 				5CB3024C225FF50E006F7D35 /* Assets.xcassets */,
-				5CB3024E225FF50E006F7D35 /* LaunchScreen.storyboard */,
 				5CB30251225FF50E006F7D35 /* Info.plist */,
 			);
 			path = PlacesToKnow;
@@ -123,6 +129,33 @@
 				5CB30267225FF50F006F7D35 /* Info.plist */,
 			);
 			path = PlacesToKnowUITests;
+			sourceTree = "<group>";
+		};
+		5CB3027722600061006F7D35 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5CB3027922600C10006F7D35 /* MapViewController.swift */,
+				5CB30275225FF8F4006F7D35 /* FinderViewController.swift */,
+				5CB30273225FF89E006F7D35 /* PlacesTableViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		5CB302782260007E006F7D35 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5CB30249225FF50D006F7D35 /* Main.storyboard */,
+				5CB3024E225FF50E006F7D35 /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5CB3027D22601556006F7D35 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5CB3027B2260154D006F7D35 /* Place.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,8 +289,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5CB30248225FF50D006F7D35 /* ViewController.swift in Sources */,
 				5CB30246225FF50D006F7D35 /* AppDelegate.swift in Sources */,
+				5CB30276225FF8F4006F7D35 /* FinderViewController.swift in Sources */,
+				5CB30274225FF89E006F7D35 /* PlacesTableViewController.swift in Sources */,
+				5CB3027A22600C10006F7D35 /* MapViewController.swift in Sources */,
+				5CB3027C2260154D006F7D35 /* Place.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,8 +468,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8GCV4WW74S;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = PlacesToKnow/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -441,8 +477,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rayashi.placestoknow.PlacesToKnow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -450,8 +487,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8GCV4WW74S;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = PlacesToKnow/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -459,8 +496,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rayashi.placestoknow.PlacesToKnow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
