@@ -17,7 +17,7 @@ class Place {
     init(placemark: CLPlacemark) {
         latitude = (placemark.location?.coordinate.latitude)!
         logitude = (placemark.location?.coordinate.longitude)!
-        name = ""
+        name = placemark.name ?? placemark.country ?? "Desconhecido"
         address = Place.getAddress(from: placemark)
     }
     
