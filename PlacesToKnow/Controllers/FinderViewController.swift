@@ -9,6 +9,10 @@ enum FindPlaceMessageType {
     case error(String)
 }
 
+protocol FindPlaceDelegate: class {
+    func savePlace(_ place: Place)
+}
+
 class FinderViewController: UIViewController {
 
     @IBOutlet weak var tfSearchTerm: UITextField!
@@ -17,8 +21,8 @@ class FinderViewController: UIViewController {
     @IBOutlet weak var vLoading: UIView!
     
     var locationManager = CLLocationManager()
-    
     var place: Place!
+    weak var delegate: FindPlaceDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,10 +104,12 @@ class FinderViewController: UIViewController {
         let cancelAction = UIAlertAction(title: "Cancelar", style: .default, handler: nil)
         alert.addAction(cancelAction)
         if hasConfirmation {
-            let confirmationAction = UIAlertAction(title: "Confirmar", style: .default, handler: nil)
+            let confirmationAction = UIAlertAction(title: "Confirmar", style: .default) { action in
+                self.delegate.savePlace(self.place)
+                self.dismiss(animated: true, completion: nil)
+            }
             alert.addAction(confirmationAction)
         }
-        
         present(alert, animated: true, completion: nil)
     }
     

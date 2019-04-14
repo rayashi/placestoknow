@@ -3,7 +3,7 @@
 import Foundation
 import MapKit
 
-class Place {
+class Place: Codable {
     
     var name: String
     var latitude: CLLocationDegrees
@@ -40,5 +40,11 @@ class Place {
         }
         
         return address
+    }
+}
+
+extension Place: Equatable {
+    static func == (lhs: Place, rhs: Place) -> Bool {
+        return lhs.latitude == rhs.latitude && lhs.logitude == rhs.logitude
     }
 }

@@ -56,7 +56,7 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="UDU-Rg-TLJ"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="3qO-uO-8QE">
                             <connections>
-                                <segue destination="qVs-Uj-52Q" kind="presentation" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="cBP-Mk-rii"/>
+                                <segue destination="qVs-Uj-52Q" kind="presentation" identifier="segueToFind" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="cBP-Mk-rii"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
