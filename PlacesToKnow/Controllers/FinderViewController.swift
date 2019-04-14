@@ -2,6 +2,7 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
 enum FindPlaceMessageType {
     case confiemation(String)
@@ -15,24 +16,60 @@ class FinderViewController: UIViewController {
     @IBOutlet weak var aiLoading: UIActivityIndicatorView!
     @IBOutlet weak var vLoading: UIView!
     
+    var locationManager = CLLocationManager()
+    
     var place: Place!
     
     override func viewDidLoad() {
-        super.viewDidLoad() 
-
+        super.viewDidLoad()
+        let gesture = UILongPressGestureRecognizer(target: self, action: #selector(onLongPressOnMap(_:)))
+        gesture.minimumPressDuration = 2.0
+        mapView.addGestureRecognizer(gesture)
     }
+    
+    @objc func onLongPressOnMap(_ gesture: UILongPressGestureRecognizer) {
+        guard gesture.state == .began else { return }
+        load(show: true)
+        let viewLocation = gesture.location(in: mapView)
+        let coordinate = mapView.convert(viewLocation, toCoordinateFrom: mapView)
+        let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+        CLGeocoder().reverseGeocodeLocation(location) { (placemarks, error) in
+            self.placemarskHandler(placemarks, error)
+        }
+    }
+    
     @IBAction func findPlace(_ sender: Any) {
         tfSearchTerm.resignFirstResponder()
         let term = tfSearchTerm.text!
         load(show: true)
-        let geoCoder = CLGeocoder()
-        geoCoder.geocodeAddressString(term) { (placemarkes, error) in
-            self.load(show: false)
-            if error != nil {
-                self.showMessage(using: .error("Erro ao encontrar local"))
-            } else if !self.savePlace(with: placemarkes?.first) {
-                self.showMessage(using: .error("Erro ao encontrar local"))
+        CLGeocoder().geocodeAddressString(term) { (placemarks, error) in
+            self.placemarskHandler(placemarks, error)
+        }
+    }
+    
+    @IBAction func onMyLocationPress(_ sender: UIButton) {
+        
+        if CLLocationManager.locationServicesEnabled() {
+            if CLLocationManager.authorizationStatus() == .restricted ||
+                CLLocationManager.authorizationStatus() == .denied ||
+                CLLocationManager.authorizationStatus() == .notDetermined {
+                locationManager.requestWhenInUseAuthorization()
             }
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.delegate = self
+            locationManager.startUpdatingLocation()
+        } else {
+            showMessage(using: .error("Ligue o GPS por favor"))
+        }
+    }
+    
+    
+    @objc func placemarskHandler(_ placemarks: [CLPlacemark]?, _ error: Error?) -> Void {
+        self.load(show: false)
+        if error != nil {
+            self.showMessage(using: .error("Erro ao encontrar local"))
+        } else if !self.savePlace(with: placemarks?.first) {
+            self.showMessage(using: .error("Erro ao encontrar local"))
         }
     }
     
@@ -81,5 +118,18 @@ class FinderViewController: UIViewController {
     
     @IBAction func close(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+}
+
+extension FinderViewController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        self.locationManager.stopUpdatingLocation()
+        let region = MKCoordinateRegion(center: locations[0].coordinate, latitudinalMeters: 3000, longitudinalMeters: 3000)
+        self.mapView.setRegion(region, animated: true)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        self.showMessage(using: .error("Incapaz de encrontar a localização"))
     }
 }
