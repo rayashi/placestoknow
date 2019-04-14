@@ -12,9 +12,19 @@ class PlacesTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == "segueToFind" else { return }
-        let finderViewController = segue.destination as! FinderViewController
-        finderViewController.delegate = self
+        switch segue.identifier {
+        case "segueToFind":
+            let finderViewController = segue.destination as! FinderViewController
+            finderViewController.delegate = self
+        case "segueToMap":
+            if let place = sender as! Place? {
+                let mapViewController = segue.destination as! MapViewController
+                mapViewController.places = [place]
+            }
+        default:
+            return
+        }
+
     }
     
     func loadPlaces() {
@@ -36,6 +46,11 @@ class PlacesTableViewController: UITableViewController {
         let place = self.places[indexPath.row]
         cell.textLabel?.text = place.name
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let place = places[indexPath.row]
+        performSegue(withIdentifier: "segueToMap", sender: place)
     }
 
 }

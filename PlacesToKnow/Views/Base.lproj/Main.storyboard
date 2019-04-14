@@ -152,6 +152,7 @@
                         <outlet property="lbName" destination="Oth-Zs-vyR" id="fCq-lt-hJ8"/>
                         <outlet property="mapView" destination="eHA-Es-zId" id="0IG-k3-UB4"/>
                         <outlet property="sbSearch" destination="Cy5-zM-5El" id="lZA-1N-uFz"/>
+                        <outlet property="viDetails" destination="BQm-oS-HBK" id="Knl-4g-9Sx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7oT-hf-D3E" userLabel="First Responder" sceneMemberID="firstResponder"/>
